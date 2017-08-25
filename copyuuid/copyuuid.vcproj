@@ -41,6 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="../../MyUtility/stlsoft/include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -115,6 +116,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="../../MyUtility/stlsoft/include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -168,7 +170,7 @@
 	</References>
 	<Files>
 		<Filter
-			Name="Source Files"
+			Name="2 Source Files"
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
@@ -216,9 +218,13 @@
 				RelativePath="..\..\MyUtility\UrlEncode.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\..\MyUtility\UTF16toUTF8.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
-			Name="Header Files"
+			Name="1 Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
@@ -258,9 +264,13 @@
 				RelativePath="..\..\MyUtility\UrlEncode.h"
 				>
 			</File>
+			<File
+				RelativePath="..\..\MyUtility\UTF16toUTF8.h"
+				>
+			</File>
 		</Filter>
 		<Filter
-			Name="Resource Files"
+			Name="3 Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
