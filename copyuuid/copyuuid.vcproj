@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../MyUtility/stlsoft/include"
+				AdditionalIncludeDirectories="../../lsMisc/stlsoft/include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -116,7 +116,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../MyUtility/stlsoft/include"
+				AdditionalIncludeDirectories="../../lsMisc/stlsoft/include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -175,7 +175,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\MyUtility\CommandLineParser.cpp"
+				RelativePath="..\..\lsMisc\CommandLineParser.cpp"
 				>
 			</File>
 			<File
@@ -183,11 +183,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\OpenCommon.cpp"
+				RelativePath="..\..\lsMisc\OpenCommon.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\SetClipboardText.cpp"
+				RelativePath="..\..\lsMisc\SetClipboardText.cpp"
 				>
 			</File>
 			<File
@@ -211,15 +211,15 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\stdwin32\stdwin32.cpp"
+				RelativePath="..\..\lsMisc\stdwin32\stdwin32.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\UrlEncode.cpp"
+				RelativePath="..\..\lsMisc\UrlEncode.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\UTF16toUTF8.cpp"
+				RelativePath="..\..\lsMisc\UTF16toUTF8.cpp"
 				>
 			</File>
 		</Filter>
@@ -229,7 +229,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\MyUtility\CommandLineParser.h"
+				RelativePath="..\..\lsMisc\CommandLineParser.h"
 				>
 			</File>
 			<File
@@ -237,7 +237,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\OpenCommon.h"
+				RelativePath="..\..\lsMisc\OpenCommon.h"
 				>
 			</File>
 			<File
@@ -245,7 +245,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\SetClipboardText.h"
+				RelativePath="..\..\lsMisc\SetClipboardText.h"
 				>
 			</File>
 			<File
@@ -253,7 +253,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\stdwin32\stdwin32.h"
+				RelativePath="..\..\lsMisc\stdwin32\stdwin32.h"
 				>
 			</File>
 			<File
@@ -261,11 +261,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\UrlEncode.h"
+				RelativePath="..\..\lsMisc\UrlEncode.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\MyUtility\UTF16toUTF8.h"
+				RelativePath="..\..\lsMisc\UTF16toUTF8.h"
 				>
 			</File>
 		</Filter>

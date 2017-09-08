@@ -8,10 +8,10 @@
 using std::wstring;
 #include <cwctype>
 #include <windows.h>
-#include "../../MyUtility/SetClipboardText.h"
-#include "../../MyUtility/OpenCommon.h"
-#include "../../MyUtility/CommandLineParser.h"
-#include "../../MyUtility/stdwin32/stdwin32.h"
+#include "../../lsMisc/SetClipboardText.h"
+#include "../../lsMisc/OpenCommon.h"
+#include "../../lsMisc/CommandLineParser.h"
+#include "../../lsMisc/stdwin32/stdwin32.h"
 using namespace stdwin32;
 using namespace Ambiesoft;
 
@@ -58,7 +58,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		wstring message = L"copyuuid.exe [/u] [/l] [/h]";
 		message += L"\r\n\r\n";
 		message += L"/l\r\n Output is Lowercase\r\n";
-		message += L"/u\r\n Output is Uppercase\r\n";
+		message += L"/u\r\n Output is Uppercase (default)\r\n";
 		message += L"/h\r\n Show help";
 		MessageBox(NULL,
 			message.c_str(),
@@ -107,7 +107,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		ErrorExit(message.c_str());
 	}
 
-
+	bool isLower = opLower.hadOption();
 	do
 	{
 		UUID uuid;
@@ -123,9 +123,9 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		}
 
 		wstring clipset((LPCWSTR)pUUID);
-		if(opLower.hadOption())
+		if(isLower)
 			std::transform(clipset.begin(), clipset.end(), clipset.begin(), towlower);
-		else if(opUpper.hadOption())
+		else 
 			std::transform(clipset.begin(), clipset.end(), clipset.begin(), towupper);
 
 		if(!SetClipboardText(NULL, clipset.c_str()))
