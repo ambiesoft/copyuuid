@@ -1,1 +1,18 @@
-あ
+"Output is Lowercase."="小文字で出力します。"
+"Output is Uppercase(default)."="大文字で出力します（デフォルト）。"
+"Repeatedly(with freqency of FREQ(in millisec)) copy a new UUID onto the clipboard."="FREQ(milisec)の頻度で新しいUUIDをクリップボードにコピーします。"
+"Count of repetition of /pf (default = 100)"="/pf の連続実行回数を指定します（デフォルト=100）。"
+
+"3-letter language id for displaying text"="テキストを表示するための３文字の言語識別IDを指定します。"
+"Show help"="ヘルプを表示します。"
+
+"/pf must have argument FREQ."="/pf は FREQ の引数を持たなければなりません。"
+"/pc must have argument COUNT"="/pc は COUNT の引数を持たなければなりません。"
+
+"Unknown option(s):"="不明なオプション："
+
+"Failed to create UUID."="UUIDの作成に失敗しました。"
+"Failed to convert UUID to string."="UUID から文字列への変換に失敗しました。"
+"Failed to copy onto the clipboard."="クリップボードへのコピーに失敗しました。"
+
+"New UUID has been copied onto the clipboard."="新しいUUIDがクリップボードにコピーされました。"

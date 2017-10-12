@@ -1,6 +1,6 @@
 {
 	"name": "copyuuid",
-	"solution": "copyuuid.sln",
+	"solution": "copyuuid2013.sln",
 	"targetproject": "copyuuid",
 	"configuration": "Release",
     "targets": [
@@ -14,7 +14,7 @@
     "remotedir": "http://ambiesoft.fam.cx/ffdav/uploads/copyuuid/",
     "remotesha1" : "http://ambiesoft.fam.cx/ffdav/uploads/getSha1.php?file=copyuuid/{}",
     
-    "TotalFileCount": 10,
+    "TotalFileCount": 7,
     
     "ShouldNotBeFiles": [
     ],

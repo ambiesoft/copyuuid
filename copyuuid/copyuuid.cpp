@@ -33,6 +33,8 @@ using std::wstring;
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/I18N.h"
+#include "../../lsMisc/UrlEncode.h"
+
 using namespace stdwin32;
 using namespace Ambiesoft;
 
@@ -75,20 +77,45 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	bool opVersion=false;
 	parser.AddOption(L"/v", 0, &opVersion);
 
+	wstring opLang;
+	parser.AddOption(L"/lang", 1, &opLang);
+
 	parser.Parse();
+
+	i18nInitLangmap(NULL, opLang.empty() ? NULL : opLang.c_str());
 
 	if(opHelp.hadOption())
 	{
-		wstring message = L"copyuuid.exe [/h] [/u] [/l] [/pf FREQ]";
+		wstring message = L"copyuuid.exe [/h] [/u] [/l] [/pf FREQ] [/pc COUNT]";
 		message += L"\r\n\r\n";
-		message += L"/l\r\n  Output is Lowercase\r\n";
-		message += L"/u\r\n  Output is Uppercase (default)\r\n";
-		message += L"/pf\r\n  Repeatedly (with freqency of FREQ(in millisec)) copy a new UUID onto the clipboard\r\n";
-		message += L"/pc\r\n  Count of repetition of /pf (default=100)\r\n";
-		message += L"/h\r\n  Show help";
+		
+		message += L"/l\r\n  ";
+		message += I18N(L"Output is Lowercase.");
+		message += L"\r\n";
+		
+		message += L"/u\r\n  ";
+		message += I18N(L"Output is Uppercase(default).");
+		message += L"\r\n";
+
+		message += L"/pf FREQ\r\n  ";
+		message += I18N(L"Repeatedly(with freqency of FREQ(in millisec)) copy a new UUID onto the clipboard.");
+		message += L"\r\n";
+
+		message += L"/pc COUNT\r\n  ";
+		message += I18N(L"Count of repetition of /pf (default = 100)");
+		message += L"\r\n";
+
+		message += L"/lang LANG\r\n  ";
+		message += I18N(L"3-letter language id for displaying text");
+		message += L"\r\n";
+
+		message += L"/h\r\n  ";
+		message += I18N(L"Show help");
+		message += L"\r\n";
+		
 		MessageBox(NULL,
 			message.c_str(),
-			APPNAME,
+			APPNAME L" HELP",
 			MB_ICONINFORMATION);
 		return 0;
 	}
@@ -108,7 +135,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	{
 		if(!opPulse.hadValue())
 		{
-			ErrorExit(L"/pf must have argument.");
+			ErrorExit(I18N(L"/pf must have argument FREQ."));
 		}
 		wstring freqt = opPulse.getFirstValue();
 		freq = _wtoi(freqt.c_str());
@@ -124,7 +151,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		{
 			if(!opPulseCount.hadValue())
 			{
-				ErrorExit(L"/pc must have value");
+				ErrorExit(I18N(L"/pc must have argument COUNT"));
 			}
 
 			wstring t = opPulseCount.getFirstValue();
@@ -136,7 +163,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	if(parser.hadUnknownOption())
 	{
-		wstring message = I18N(L"Unknown option(s):\r\n");
+		wstring message = I18N(L"Unknown option(s):");
+		message += L"\r\n";
 		message += parser.getUnknowOptionStrings();
 		ErrorExit(message.c_str());
 	}
@@ -153,7 +181,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		RPC_WSTR pUUID = NULL;
 		if(RPC_S_OK != UuidToStringW(&uuid, &pUUID))
 		{
-			ErrorExit(I18N(L"Failed to convert to string."));
+			ErrorExit(I18N(L"Failed to convert UUID to string."));
 		}
 
 		wstring clipset((LPCWSTR)pUUID);
@@ -164,7 +192,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 		if(!SetClipboardText(NULL, clipset.c_str()))
 		{
-			ErrorExit(I18N(L"Failed to set on clipboard."));
+			ErrorExit(I18N(L"Failed to copy onto the clipboard."));
 		}
 		RpcStringFreeW(&pUUID);
 
@@ -211,7 +239,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	//}
 
 
-	wstring message = I18N(L"New UUID has been copied to the clipboard.");
+	wstring message = I18N(L"New UUID has been copied onto the clipboard.");
 
 
 	wstring param;
@@ -219,14 +247,14 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	param += L"1";
 
 	param += L" /title:";
-	param += stdwin32::stdEncodeUrl(title);
+	param += UrlEncodeW(title.c_str());
 
 	param += L" /icon:";
 	param += stdGetFileName(stdGetModuleFileName()).c_str();
 
 	param += L" /iconindex:0";
 
-	param += _T(" \"") + stdEncodeUrl(message) + _T("\"");
+	param += _T(" \"") + UrlEncodeW(message.c_str()) + _T("\"");
 
 	OpenCommon(NULL,
 		file,

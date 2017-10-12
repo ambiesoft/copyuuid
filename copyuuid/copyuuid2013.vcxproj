@@ -69,7 +69,15 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>copy C:\Linkout\CommonExe\showballoon.exe "$(TargetDir)"</Command>
+      <Command>copy C:\Linkout\CommonExe\showballoon.exe "$(TargetDir)"
+
+copy "$(SolutionDir)Readme.md" "$(TargetDir)"
+copy "$(SolutionDir)History.txt" "$(TargetDir)"
+copy "$(SolutionDir)LICENSE" "$(TargetDir)"
+
+mkdir "$(TargetDir)lang"
+copy "$(ProjectDir)lang\jpn.txt" "$(TargetDir)lang\"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -97,6 +105,9 @@
 copy "$(SolutionDir)Readme.md" "$(TargetDir)"
 copy "$(SolutionDir)History.txt" "$(TargetDir)"
 copy "$(SolutionDir)LICENSE" "$(TargetDir)"
+
+mkdir "$(TargetDir)lang"
+copy "$(ProjectDir)lang\jpn.txt" "$(TargetDir)lang\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
