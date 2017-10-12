@@ -1,0 +1,29 @@
+{
+	"name": "copyuuid",
+	"solution": "copyuuid.sln",
+	"targetproject": "copyuuid",
+	"configuration": "Release",
+    "targets": [
+            {
+            	"setoutdirforbuild": true,
+                "outdir" : "C:/Linkout/copyuuid/",
+                "platform":"Win32"
+            }
+    ],
+    "archivedir": "C:/Linkout/",
+    "remotedir": "http://ambiesoft.fam.cx/ffdav/uploads/copyuuid/",
+    "remotesha1" : "http://ambiesoft.fam.cx/ffdav/uploads/getSha1.php?file=copyuuid/{}",
+    
+    "TotalFileCount": 10,
+    
+    "ShouldNotBeFiles": [
+    ],
+    
+    "ShouldBeFiles": [
+    ],
+    
+    "ShouldBeOneOfThem": [],
+    
+    "obtainverfrom": "History.txt",
+    "obtainverregex": "\\d+\\.\\d+"
+}

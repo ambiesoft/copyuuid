@@ -1,17 +1,38 @@
-// copyuuid.cpp : Defines the entry point for the application.
+//Copyright (C) 2017 Ambiesoft All rights reserved.
 //
+//Redistribution and use in source and binary forms, with or without
+//modification, are permitted provided that the following conditions
+//are met:
+//1. Redistributions of source code must retain the above copyright
+//notice, this list of conditions and the following disclaimer.
+//2. Redistributions in binary form must reproduce the above copyright
+//notice, this list of conditions and the following disclaimer in the
+//documentation and/or other materials provided with the distribution.
+//
+//THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+//ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+//ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+//FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+//DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+//OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+//HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+//LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+//OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+//SUCH DAMAGE.
 
 #include "stdafx.h"
 
 #include "copyuuid.h"
 
 using std::wstring;
-#include <cwctype>
+//#include <cwctype>
 #include <windows.h>
 #include "../../lsMisc/SetClipboardText.h"
 #include "../../lsMisc/OpenCommon.h"
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/I18N.h"
 using namespace stdwin32;
 using namespace Ambiesoft;
 
@@ -51,22 +72,35 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	COption opPulseCount(L"/pc", 1);
 	parser.AddOption(&opPulseCount);
 
+	bool opVersion=false;
+	parser.AddOption(L"/v", 0, &opVersion);
+
 	parser.Parse();
 
 	if(opHelp.hadOption())
 	{
-		wstring message = L"copyuuid.exe [/u] [/l] [/h]";
+		wstring message = L"copyuuid.exe [/h] [/u] [/l] [/pf FREQ]";
 		message += L"\r\n\r\n";
-		message += L"/l\r\n Output is Lowercase\r\n";
-		message += L"/u\r\n Output is Uppercase (default)\r\n";
-		message += L"/h\r\n Show help";
+		message += L"/l\r\n  Output is Lowercase\r\n";
+		message += L"/u\r\n  Output is Uppercase (default)\r\n";
+		message += L"/pf\r\n  Repeatedly (with freqency of FREQ(in millisec)) copy a new UUID onto the clipboard\r\n";
+		message += L"/pc\r\n  Count of repetition of /pf (default=100)\r\n";
+		message += L"/h\r\n  Show help";
 		MessageBox(NULL,
 			message.c_str(),
 			APPNAME,
 			MB_ICONINFORMATION);
 		return 0;
 	}
-	
+	if(opVersion)
+	{
+		wstring message = stdwin32::string_format(L"%s version %s", APPNAME, VERSION);
+		MessageBox(NULL,
+			message.c_str(),
+			APPNAME,
+			MB_ICONINFORMATION);
+		return 0;
+	}
 	bool ispulse = opPulse.hadOption();
 	int freq=1000;
 	int pulsecount=100;

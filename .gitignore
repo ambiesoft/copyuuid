@@ -1,6 +1,8 @@
 Debug/
+Release/
 copyuuid.ncb
 copyuuid/Debug/
 copyuuid/Release/
 *.suo
+copyuuid2013.sdf
 /copyuuid/*.user
