@@ -49,13 +49,9 @@ void ErrorExit(LPCWSTR p)
 	exit(1);
 }
 
-int APIENTRY _tWinMain(HINSTANCE hInstance,
-					   HINSTANCE hPrevInstance,
-					   LPTSTR    lpCmdLine,
-					   int       nCmdShow)
+int aaa()
 {
-	UNREFERENCED_PARAMETER(hPrevInstance);
-	UNREFERENCED_PARAMETER(lpCmdLine);
+
 
 	CCommandLineParser parser;
 
@@ -263,3 +259,22 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	return 0;
 }
+
+int APIENTRY _tWinMain(HINSTANCE hInstance,
+                       HINSTANCE hPrevInstance,
+                       LPTSTR    lpCmdLine,
+                       int       nCmdShow)
+{
+    UNREFERENCED_PARAMETER(hPrevInstance);
+    UNREFERENCED_PARAMETER(lpCmdLine);
+    return aaa();
+}
+int APIENTRY WinMain(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPSTR    lpCmdLine,
+                     int       nCmdShow)
+ {
+    UNREFERENCED_PARAMETER(hPrevInstance);
+    UNREFERENCED_PARAMETER(lpCmdLine);
+    return aaa();
+ }
