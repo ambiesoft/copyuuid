@@ -49,10 +49,8 @@ void ErrorExit(LPCWSTR p)
 	exit(1);
 }
 
-int aaa()
+int mymain()
 {
-
-
 	CCommandLineParser parser;
 
 	COption opUpper(L"/u");
@@ -267,7 +265,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-    return aaa();
+    return mymain();
 }
 int APIENTRY WinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
@@ -276,5 +274,5 @@ int APIENTRY WinMain(HINSTANCE hInstance,
  {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-    return aaa();
+    return mymain();
  }

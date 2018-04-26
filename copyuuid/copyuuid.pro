@@ -55,10 +55,10 @@ message($$QMAKESPEC)
 
 win32 {
     win32-g++ {
-        LIBS += -lOle32 -lRpcrt4 -lshlwapi
+        LIBS += -lOle32 -lRpcrt4 -lshlwapi -lUser32
     }
     win32-msvc* {
-        LIBS += Ole32.lib Rpcrt4.lib shlwapi.lib
+        LIBS += Ole32.lib Rpcrt4.lib shlwapi.lib User32.lib
     }
 }
 linux-g++ {
