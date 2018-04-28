@@ -59,7 +59,7 @@ int mymain()
 	COption opLower(L"/l");
 	parser.AddOption(&opLower);
 
-	COption opHelp(L"/h", L"/H");
+	COption opHelp(L"/h", L"/H", L"-h");
 	parser.AddOption(&opHelp);
 
 	COption opPulse(L"/pf", 1);
@@ -107,6 +107,7 @@ int mymain()
 		message += I18N(L"Show help");
 		message += L"\r\n";
 		
+		// message = parser.getHelpMessage();
 		MessageBox(NULL,
 			message.c_str(),
 			APPNAME L" HELP",
