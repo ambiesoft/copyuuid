@@ -1,6 +1,6 @@
 {
 	"name": "copyuuid",
-	"solution": "copyuuid2013.sln",
+	"solution": "copyuuid.sln",
 	"targetproject": "copyuuid",
 	"configuration": "Release",
     "targets": [
@@ -25,5 +25,5 @@
     "ShouldBeOneOfThem": [],
     
     "obtainverfrom": "History.txt",
-    "obtainverregex": "\\d+\\.\\d+"
+    "obtainverregex": "\\d+\\.\\d+\\.\\d+"
 }

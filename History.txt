@@ -1,2 +1,5 @@
+2019/06/14 v1.0.1
+Update code due to update of lsMisc and others
+
 2017/10/12 v1.0
 

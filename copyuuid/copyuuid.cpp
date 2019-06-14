@@ -31,11 +31,11 @@ using std::wstring;
 #include "../../lsMisc/SetClipboardText.h"
 #include "../../lsMisc/OpenCommon.h"
 #include "../../lsMisc/CommandLineParser.h"
-#include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/I18N.h"
 #include "../../lsMisc/UrlEncode.h"
+#include "../../lsMisc/stdosd/stdosd.h"
 
-using namespace stdwin32;
+using namespace Ambiesoft::stdosd;
 using namespace Ambiesoft;
 
 #pragma comment(lib,"Rpcrt4.lib")
@@ -59,13 +59,13 @@ int mymain()
 	COption opLower(L"/l");
 	parser.AddOption(&opLower);
 
-	COption opHelp(L"/h", L"/H", L"-h");
+	COption opHelp( L"/h", L"-h", 0);
 	parser.AddOption(&opHelp);
 
-	COption opPulse(L"/pf", 1);
+	COption opPulse(L"/pf", ExactCount::Exact_1);
 	parser.AddOption(&opPulse);
 
-	COption opPulseCount(L"/pc", 1);
+	COption opPulseCount(L"/pc", ExactCount::Exact_1);
 	parser.AddOption(&opPulseCount);
 
 	bool opVersion=false;
@@ -103,10 +103,14 @@ int mymain()
 		message += I18N(L"3-letter language id for displaying text");
 		message += L"\r\n";
 
+		message += L"/v\r\n  ";
+		message += I18N(L"Show version");
+		message += L"\r\n";
+
 		message += L"/h\r\n  ";
 		message += I18N(L"Show help");
 		message += L"\r\n";
-		
+
 		// message = parser.getHelpMessage();
 		MessageBox(NULL,
 			message.c_str(),
@@ -116,7 +120,8 @@ int mymain()
 	}
 	if(opVersion)
 	{
-		wstring message = stdwin32::string_format(L"%s version %s", APPNAME, VERSION);
+		// wstring message = stdwin32::string_format(L"%s version %s", APPNAME, VERSION);
+		wstring message = stdFormat(L"%s version %s", APPNAME, VERSION);
 		MessageBox(NULL,
 			message.c_str(),
 			APPNAME,
@@ -242,14 +247,14 @@ int mymain()
 	param += L"1";
 
 	param += L" /title:";
-	param += UrlEncodeW(title.c_str());
+	param += UrlEncodeStd(title.c_str());
 
 	param += L" /icon:";
 	param += stdGetFileName(stdGetModuleFileName()).c_str();
 
 	param += L" /iconindex:0";
 
-	param += _T(" \"") + UrlEncodeW(message.c_str()) + _T("\"");
+	param += _T(" \"") + UrlEncodeStd(message.c_str()) + _T("\"");
 
 	OpenCommon(NULL,
 		file,

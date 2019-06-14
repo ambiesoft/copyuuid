@@ -1,3 +1,4 @@
+.vs/
 build/
 ipch/
 Debug/
@@ -6,7 +7,8 @@ copyuuid.ncb
 copyuuid/Debug/
 copyuuid/Release/
 *.suo
-copyuuid2013.sdf
+*.sdf
+
 /copyuuid/*.user
 
 build-copyuuid-*/
