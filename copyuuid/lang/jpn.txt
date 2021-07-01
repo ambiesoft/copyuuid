@@ -16,3 +16,5 @@
 "Failed to copy onto the clipboard."="クリップボードへのコピーに失敗しました。"
 
 "New UUID has been copied onto the clipboard."="新しいUUIDがクリップボードにコピーされました。"
+"Show Help"="ヘルプを表示します。"
+"Show Version"="ヴァージョンを表示します。"

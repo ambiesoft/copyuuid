@@ -282,21 +282,27 @@ int mymain()
 	return 0;
 }
 
-int APIENTRY _tWinMain(HINSTANCE hInstance,
-                       HINSTANCE hPrevInstance,
-                       LPTSTR    lpCmdLine,
-                       int       nCmdShow)
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
-    return mymain();
+	UNREFERENCED_PARAMETER(hPrevInstance);
+	UNREFERENCED_PARAMETER(pCmdLine);
+	return mymain();
 }
-int APIENTRY WinMain(HINSTANCE hInstance,
-                     HINSTANCE hPrevInstance,
-                     LPSTR    lpCmdLine,
-                     int       nCmdShow)
- {
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
-    return mymain();
- }
+//int APIENTRY _tWinMain(HINSTANCE hInstance,
+//                       HINSTANCE hPrevInstance,
+//                       LPTSTR    lpCmdLine,
+//                       int       nCmdShow)
+//{
+//    UNREFERENCED_PARAMETER(hPrevInstance);
+//    UNREFERENCED_PARAMETER(lpCmdLine);
+//    return mymain();
+//}
+//int APIENTRY WinMain(HINSTANCE hInstance,
+//                     HINSTANCE hPrevInstance,
+//                     LPSTR    lpCmdLine,
+//                     int       nCmdShow)
+// {
+//    UNREFERENCED_PARAMETER(hPrevInstance);
+//    UNREFERENCED_PARAMETER(lpCmdLine);
+//    return mymain();
+// }

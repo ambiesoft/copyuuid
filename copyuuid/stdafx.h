@@ -44,6 +44,6 @@
 
 // TODO: reference additional headers your program requires here
 #define APPNAME L"copyuuid"
-#define VERSION L"1.0.1"
+#define VERSION L"1.1.1"
 
 

@@ -8,6 +8,7 @@ copyuuid/Debug/
 copyuuid/Release/
 *.suo
 *.sdf
+*.aps
 
 /copyuuid/*.user
 

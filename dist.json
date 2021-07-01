@@ -6,13 +6,13 @@
     "targets": [
             {
             	"setoutdirforbuild": true,
-                "outdir" : "C:/Linkout/copyuuid/",
+                "outdir" : "build/copyuuid/",
                 "platform":"Win32"
             }
     ],
     "archivedir": "C:/Linkout/",
-    "remotedir": "http://ambiesoft.fam.cx/ffdav/uploads/copyuuid/",
-    "remotesha1" : "http://ambiesoft.fam.cx/ffdav/uploads/getSha1.php?file=copyuuid/{}",
+    "remotedir": "https://ambiesoft.com/ffdav/uploads/copyuuid/",
+    "remotesha1" : "https://ambiesoft.com/ffdav/uploads/getSha1.php?file=copyuuid/{}",
     
     "TotalFileCount": 7,
     
