@@ -51,67 +51,86 @@ void ErrorExit(LPCWSTR p)
 
 int mymain()
 {
-	CCommandLineParser parser;
+	CCommandLineParser parser(L"Copy uuid onto clipboard", L"copyuuid");
 
-	COption opUpper(L"/u");
+	COption opUpper(L"/u", ArgCount::ArgCount_Zero, ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"Output is Uppercase(default)."));
 	parser.AddOption(&opUpper);
 
-	COption opLower(L"/l");
+	COption opLower(L"/l", ArgCount::ArgCount_Zero, ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"Output is Lowercase."));
 	parser.AddOption(&opLower);
 
-	COption opHelp( L"/h", L"-h", 0);
-	parser.AddOption(&opHelp);
+	bool bHelp = false;
+	parser.AddOptionRange({ L"--help",L"-h",L"-help",L"/?",L"/h" },
+		0,
+		&bHelp,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"Show Help"));
 
-	COption opPulse(L"/pf", ExactCount::Exact_1);
+	COption opPulse(L"/pf", ExactCount::Exact_1, ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"Repeatedly(with freqency of FREQ(in millisec)) copy a new UUID onto the clipboard."));
 	parser.AddOption(&opPulse);
 
-	COption opPulseCount(L"/pc", ExactCount::Exact_1);
+	COption opPulseCount(L"/pc", ExactCount::Exact_1, ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"Count of repetition of /pf (default = 100)"));
 	parser.AddOption(&opPulseCount);
 
 	bool opVersion=false;
-	parser.AddOption(L"/v", 0, &opVersion);
+	parser.AddOptionRange({ L"--version",L"-v",L"-version",L"/v" },
+		0,
+		&bHelp,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"Show Version"));
 
 	wstring opLang;
-	parser.AddOption(L"/lang", 1, &opLang);
+	parser.AddOption(L"/lang", 1, &opLang, ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"3-letter language id for displaying text"));
 
 	parser.Parse();
 
 	i18nInitLangmap(NULL, opLang.empty() ? NULL : opLang.c_str());
 
-	if(opHelp.hadOption())
+	if(bHelp)
 	{
-		wstring message = L"copyuuid.exe [/h] [/u] [/l] [/pf FREQ] [/pc COUNT]";
-		message += L"\r\n\r\n";
-		
-		message += L"/l\r\n  ";
-		message += I18N(L"Output is Lowercase.");
-		message += L"\r\n";
-		
-		message += L"/u\r\n  ";
-		message += I18N(L"Output is Uppercase(default).");
-		message += L"\r\n";
+		wstring message;
+		if(true)
+		{
+			message = parser.getHelpMessage();
+		}
+		else
+		{
+			message = L"copyuuid.exe [/h] [/u] [/l] [/pf FREQ] [/pc COUNT]";
+			message += L"\r\n\r\n";
 
-		message += L"/pf FREQ\r\n  ";
-		message += I18N(L"Repeatedly(with freqency of FREQ(in millisec)) copy a new UUID onto the clipboard.");
-		message += L"\r\n";
+			message += L"/l\r\n  ";
+			message += I18N(L"Output is Lowercase.");
+			message += L"\r\n";
 
-		message += L"/pc COUNT\r\n  ";
-		message += I18N(L"Count of repetition of /pf (default = 100)");
-		message += L"\r\n";
+			message += L"/u\r\n  ";
+			message += I18N(L"Output is Uppercase(default).");
+			message += L"\r\n";
 
-		message += L"/lang LANG\r\n  ";
-		message += I18N(L"3-letter language id for displaying text");
-		message += L"\r\n";
+			message += L"/pf FREQ\r\n  ";
+			message += I18N(L"Repeatedly(with freqency of FREQ(in millisec)) copy a new UUID onto the clipboard.");
+			message += L"\r\n";
 
-		message += L"/v\r\n  ";
-		message += I18N(L"Show version");
-		message += L"\r\n";
+			message += L"/pc COUNT\r\n  ";
+			message += I18N(L"Count of repetition of /pf (default = 100)");
+			message += L"\r\n";
 
-		message += L"/h\r\n  ";
-		message += I18N(L"Show help");
-		message += L"\r\n";
+			message += L"/lang LANG\r\n  ";
+			message += I18N(L"3-letter language id for displaying text");
+			message += L"\r\n";
 
-		// message = parser.getHelpMessage();
+			message += L"/v\r\n  ";
+			message += I18N(L"Show version");
+			message += L"\r\n";
+
+			message += L"/h\r\n  ";
+			message += I18N(L"Show help");
+			message += L"\r\n";
+		}
 		MessageBox(NULL,
 			message.c_str(),
 			APPNAME L" HELP",
@@ -120,7 +139,6 @@ int mymain()
 	}
 	if(opVersion)
 	{
-		// wstring message = stdwin32::string_format(L"%s version %s", APPNAME, VERSION);
 		wstring message = stdFormat(L"%s version %s", APPNAME, VERSION);
 		MessageBox(NULL,
 			message.c_str(),

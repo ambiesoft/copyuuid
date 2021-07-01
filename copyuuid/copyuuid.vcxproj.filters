@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="4 lang">
+      <UniqueIdentifier>{d2f435e7-e4e7-4772-8716-d1f7904df65a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5 dist">
+      <UniqueIdentifier>{79ebe66f-5344-4f5f-b537-3c733c31d748}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lsMisc\CommandLineParser.cpp">
@@ -95,6 +101,19 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="lang\jpn.txt" />
+    <Text Include="lang\jpn.txt">
+      <Filter>4 lang</Filter>
+    </Text>
+    <Text Include="..\History.txt">
+      <Filter>5 dist</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Filter>5 dist</Filter>
+    </None>
+    <None Include="..\Readme.md">
+      <Filter>5 dist</Filter>
+    </None>
   </ItemGroup>
 </Project>
